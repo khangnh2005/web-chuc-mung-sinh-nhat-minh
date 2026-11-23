@@ -215,4 +215,62 @@ function App() {
           {candleLit ? (
             <button onClick={handleBlowCandle} className="btn-primary">
               🌬️ Ước một điều và Thổi nến
-            </button
+            </button>
+          ) : (
+            <div className="wish-granted">
+              <p>✨ Điều ước của Bùi Thanh Minh chắc chắn sẽ thành hiện thực! ✨</p>
+              <button onClick={sprayMilk} className="btn-secondary">🥛 Bắn sữa trắng</button>
+            </div>
+          )}
+        </div>
+      </header>
+
+      <section className="gallery-section">
+        <h2>📸 Khoảnh khắc kỷ niệm</h2>
+        <div className="gallery-grid">
+          <div className="photo-card">
+            <img src="/images/photo1.jpg" alt="Kỷ niệm 1" />
+          </div>
+          <div className="photo-card">
+            <img src="/images/photo2.jpg" alt="Kỷ niệm 2" />
+          </div>
+        </div>
+      </section>
+
+      <section className="wish-section">
+        <h2>💌 Gửi lời chúc tới Bùi Thanh Minh</h2>
+        <form onSubmit={handleSubmit} className="wish-form">
+          <input
+            type="text"
+            placeholder="Tên của bạn..."
+            value={sender}
+            onChange={(e) => setSender(e.target.value)}
+            required
+          />
+          <textarea
+            placeholder="Nhập lời chúc sinh nhật..."
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            rows="3"
+            required
+          />
+          <button type="submit" className="btn-primary">Gửi lời chúc 🚀</button>
+        </form>
+
+        <div className="wish-list">
+          {wishes.map((w) => (
+            <div key={w.id} className="wish-card">
+              <div className="wish-header">
+                <strong>{w.sender}</strong>
+                <span>{w.time}</span>
+              </div>
+              <p>{w.message}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default App;
